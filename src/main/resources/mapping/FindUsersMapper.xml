@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--映射文件配置，namespace指向接口-->
+<mapper namespace="io.ywt.communitytest.mapper.FindUsersMapper">
+    <!--根据ID查询记录-->
+    <resultMap id="BaseResultMap" type="User">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="userName" jdbcType="VARCHAR" property="userName" />
+        <result column="passWord" jdbcType="VARCHAR" property="passWord" />
+        <result column="sex" jdbcType="VARCHAR" property="sex" />
+        <result column="hobby" jdbcType="VARCHAR" property="hobby" />
+        <result column="createtime" jdbcType="VARCHAR" property="createTime" />
+    </resultMap>
+
+
+    <select id="findUsersById" parameterType="Integer" resultMap="BaseResultMap">
+    select * from USER_INFO t where id = #{value}
+    </select>
+</mapper>

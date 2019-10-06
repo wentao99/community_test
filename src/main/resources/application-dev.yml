@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+#mybatis的mapper配置文件
+mybatis:
+  config-location: classpath:mybatis-config.xml  # mybatis配置文件所在路径
+  mapper-locations: classpath:mapping/*Mapper.xml   # 所有的mapper映射文件
+  type-aliases-package: io.ywt.communitytest.entity # 扫描entity类的别名包
+
+#showSql
+logging:
+  level:
+    com:
+      example:
+        mapper : debug
+
+#数据源配置
+spring:
+  #profiles: dev
+#  messages:
+#    basename: i18n/Messages,i18n/Pages
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource    # 配置当前要使用的数据源的操作类型
+    driver-class-name: com.mysql.cj.jdbc.Driver        # 配置MySQL的驱动程序类
+    url: jdbc:mysql://localhost:3306/test001?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=true&serverTimezone=UTC          # 数据库连接地址
+    username: root                                  # 数据库用户名
+    password: root                            # 数据库连接密码
+    dbcp2:                                          # 进行数据库连接池的配置
+      min-idle: 5                                   # 数据库连接池的最小维持连接数
+      initial-size: 5                               # 初始化提供的连接数
+      max-total: 5                                  # 最大的连接数
+      max-wait-millis: 200                          # 等待连接获取的最大超时时间
+      # 打开PSCache，并且指定每个连接上PSCache的大小
+      pool-prepared-statements: true
+
